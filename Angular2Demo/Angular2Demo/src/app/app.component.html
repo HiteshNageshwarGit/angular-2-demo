@@ -1,0 +1,79 @@
+﻿
+<div>
+
+
+    <div style="padding:5px">
+        <ul class="nav nav-tabs">
+            <li routerLinkActive="active">
+                <a routerLink="home">Home</a>
+            </li>
+            <li routerLinkActive="active">
+                <a routerLink="employees">Employees</a>
+            </li>
+        </ul>
+        <br />
+        <router-outlet></router-outlet>
+    </div>
+    
+
+    <br /><br />
+    Component life cycle
+    Your Text : <input type='text' [(ngModel)]='userText' />
+    <br /><br />
+    <simple [simpleInput]='userText'></simple> 
+
+
+    <h1>        {{pageHeader? pageHeader : 'No Page Header'}}    </h1>
+    <span> {{getFullName()}} </span>
+    <img src="{{imagePath}}" /> <!-- interpolation, its one direction -->
+    <img [src]="imagePath" /> <!-- property binding, its one direction -->
+    <!-- <img src="https://www.google.co.in/{{imagePath}}" />  must use inertpolation -->
+    <button [disabled]='isDisabled'> Click me</button>
+    <button disabled='{{isDisabled}}'> Click me</button>  <!-- must use property binding for non string data value -->
+
+
+    <br /><br />
+    <my-employee></my-employee>
+    <br /><br />
+
+    <br /><br />
+    <list-employee></list-employee>
+    <br /><br />
+
+    <button class="colorClass"> My bold class </button> <!--not from angular-->
+    <button [class]="classesToApply"> My bold class </button>  <!-- from angular-->
+    <button class="{{classesToApply}}"> My bold class </button>  <!-- from angular-->
+    <button class={{classesToApply}}> My bold class </button>  <!-- from angular-->
+
+    <button [class]="classesToApply" [class.boldClass]="applyBoldClass"> My Conditoinal bold class </button>  <!--conditional from angular-->
+
+    <br />
+    <button class="colorClass" [ngClass]='addClasses()'> My class from ng-class </button>  <!--conditional from angular-->
+
+    <br /><br />
+    <button style='color:red'
+            [style.font-weight]="isBold ? 'bold' : 'normal'">
+        My Button
+    </button>
+
+    <br /><br />
+    Event handling
+    <button (click)="onclick()">Click Me</button>
+    <button on-click="onclick()">Click Me</button>
+
+
+    <br /><br />
+    two way binding
+    <br />
+    Name : <input [value]="name" (input)='name=$event.target.value' />
+    <br />
+    <input [(ngModel)]='name'>
+    <br />
+    You enntered : {{name}}
+
+
+    
+
+
+
+</div>
